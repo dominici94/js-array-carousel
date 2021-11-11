@@ -38,29 +38,41 @@ const text = [
     'Et temporibus voluptatum suscipit tempore aliquid deleniti aut veniam inventore eligendi ex ad ullam,',
 ]
 
-// MILESTONE 2 Adesso rimuoviamo tutto il markup statico e inseriamo le immagini dinamicamente servendoci dell'array fornito e un semplice ciclo for che concatena un template literal. Al termine di questa fase ci ritroveremo con lo stesso slider, ma costruito dinamicamente attraverso JavaScript.
-
 const mainCont = document.querySelector('.main-cont');
 const slider = document.querySelector('.slider');
  
+let itemsContent = '';
+let sliderContent = ''; 
 
 for(let i=0; i < items.length; i++){
 
-    // mainCont.classList.add('active');
-
-    mainCont.innerHTML += `<img src="img/0${i+1}.jpg" alt="${title[i]}">
-    <div class="img-text">
-        <h1>${title[i]}</h1>
-        <p>${text[i]}</p>
+    itemsContent += `
+    <div class="item">
+        <img src="${items[i]}" alt="${title[i]}">
+        <div class="img-text">
+            <h1>${title[i]}</h1>
+            <p>${text[i]}</p>
+        </div>
     </div>`;
 
-    slider.innerHTML += `<div class="img-container"><div class="overlay"></div><img src="img/0${i+1}.jpg" alt="${title[i]}"></div>`;
+    sliderContent += `
+    <div class="img-container">
+        <div class="overlay">
+        </div>
+        <img src="${items[i]}" alt="${title[i]}">
+    </div>`;
+
+    // slider.innerHTML += `<div class="img-container"><div class="overlay"></div><img src="img/0${i+1}.jpg" alt="${title[i]}"></div>`;
     // console.log(mainCont);
 }
 
+console.log(itemsContent);
 
+mainCont.innerHTML = itemsContent;
+// slider.innerHTML = sliderContent;
+slider.innerHTML = sliderContent + `
+<button class="arrow up"><i class="fas fa-chevron-up"></i></button>
+<button class="arrow down"><i class="fas fa-chevron-down"></i></button>`;
 
-// <div class="img-text">
-// <h1>${title[i]}</h1>
-// <p>${text[i]}</p>
-// </div>
+const item = document.querySelector('.item');
+item.classList.add('active');

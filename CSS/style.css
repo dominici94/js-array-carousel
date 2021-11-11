@@ -22,12 +22,13 @@
 .main-cont{
     width: 80%;
     position: relative;
-    display: none;
+    /* display: none; */
 }
 
-/* .main-cont img{
+.item{
+    height: 100%;
     display: none;
-} */
+}
 
 .main-cont .img-text{
     width: 60%;
