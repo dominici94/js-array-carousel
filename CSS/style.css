@@ -21,6 +21,16 @@
 
 .main-cont{
     width: 80%;
+    position: relative;
+}
+
+.main-cont .img-text{
+    width: 60%;
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    text-align: right;
+    color: white;
 }
 
 .scroll-img{
