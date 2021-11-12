@@ -66,13 +66,49 @@ for(let i=0; i < items.length; i++){
     // console.log(mainCont);
 }
 
-console.log(itemsContent);
+// console.log(itemsContent);
 
 mainCont.innerHTML = itemsContent;
 // slider.innerHTML = sliderContent;
 slider.innerHTML = sliderContent + `
-<button class="arrow up"><i class="fas fa-chevron-up"></i></button>
-<button class="arrow down"><i class="fas fa-chevron-down"></i></button>`;
+<button type = button class="arrow up"><i class="fas fa-chevron-up"></i></button>
+<button type = button class="arrow down"><i class="fas fa-chevron-down"></i></button>`;
 
 const item = document.querySelector('.item');
 item.classList.add('active');
+
+const selected = document.querySelector('.overlay');
+selected.classList.add('selected');
+
+
+const btnDown = document.querySelector('.down')
+const btnUp = document.querySelector('.up')
+let elementi = document.getElementsByClassName('item');
+console.log(elementi);
+let overlays = document.getElementsByClassName('overlay');
+console.log(overlays);
+
+let activeItem = 0;
+
+btnDown.addEventListener('click', function(){
+    elementi[activeItem].classList.remove('active');
+    overlays[activeItem].classList.remove('selected');
+    if(activeItem == elementi.length-1){
+        activeItem = -1;
+    }
+    elementi[activeItem+1].classList.add('active');
+    overlays[activeItem+1].classList.add('selected');
+    activeItem++;
+    
+});
+
+btnUp.addEventListener('click', function(){
+    elementi[activeItem].classList.remove('active');
+    overlays[activeItem].classList.remove('selected');
+    if(activeItem == 0){
+        activeItem = elementi.length;
+    }
+    elementi[activeItem-1].classList.add('active');
+    overlays[activeItem-1].classList.add('selected');
+    activeItem--;
+});
